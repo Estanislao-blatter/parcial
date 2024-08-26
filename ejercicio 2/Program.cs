@@ -7,12 +7,27 @@
             double mayorTamaño = 0;
             int iteracion = 0;
             double Promedio = 0;
+            int DM, dm;
             for (int i = 1; i <= 5; i++) 
             {
-                 Console.Write("Ingrese el valor de diagonal mayor: ");
-                 var DM = int.Parse(Console.ReadLine());
-                 Console.Write("Ingrese el valor de diagonal menor: ");
-                 var dm = int.Parse(Console.ReadLine());
+                do
+                {
+                    Console.Write("Ingrese el valor de diagonal mayor: ");
+                    if (int.TryParse(Console.ReadLine(), out DM)&& DM>0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Diagonal mal ingresada...");
+                } while (true);
+                do
+                {
+                    Console.Write("Ingrese el valor de diagonal menor: ");
+                    if (int.TryParse(Console.ReadLine(), out dm) && (dm > 0 && dm<DM))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Diagonal mal ingresada...");
+                } while (true);
 
                  var lado = Math.Sqrt(Math.Pow(DM / 2, 2) + Math.Pow(dm / 2, 2));
                  Console.WriteLine($"Rombo {i}");
